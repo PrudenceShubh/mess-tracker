@@ -1,1 +1,56 @@
 @import "tailwindcss";
+
+/* Mobile-specific enhancements */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  button, input[type="checkbox"], input[type="date"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent zoom on form inputs */
+  input[type="date"] {
+    font-size: 16px;
+  }
+  
+  /* Better scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Remove iOS default styles */
+  input, button {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 8px;
+  }
+}
+
+/* Enhanced focus states for accessibility */
+button:focus, input:focus {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for better UX */
+* {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Custom scrollbar for better mobile experience */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f97316;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}
