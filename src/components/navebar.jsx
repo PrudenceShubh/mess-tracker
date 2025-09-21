@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import logoImage from '../assets/image.png'
 
 const Navebar = () => {
   const location = useLocation()
@@ -14,10 +15,16 @@ const Navebar = () => {
       <div className='container mx-auto px-4'>
         <div className='flex items-center justify-between h-16'>
           {/* Logo/Brand */}
-          <div className='text-xl md:text-2xl font-bold flex items-center'>
-            <span className='mr-2'>🍽️</span>
-            <span className='hidden sm:inline'>MessTracker</span>
-            <span className='sm:hidden'>Mess</span>
+          <div className='flex items-center'>
+            <img 
+              src={logoImage} 
+              alt="MessTracker Logo" 
+              className='w-8 h-8 sm:w-10 sm:h-10 mr-3 rounded-lg object-contain'
+            />
+            <div className='text-xl md:text-2xl font-bold'>
+              <span className='hidden sm:inline'>MessTracker</span>
+              <span className='sm:hidden'>Mess</span>
+            </div>
           </div>
           
           {/* Desktop Navigation Links */}
