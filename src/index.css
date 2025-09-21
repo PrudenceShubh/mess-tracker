@@ -3,7 +3,7 @@
 /* Mobile-specific enhancements */
 @media (max-width: 768px) {
   /* Improve touch targets */
-  button, input[type="checkbox"], input[type="date"] {
+  button, input[type="checkbox"], input[type="date"], [role="button"], .cursor-pointer {
     min-height: 44px;
     min-width: 44px;
   }
@@ -23,6 +23,24 @@
     -webkit-appearance: none;
     appearance: none;
     border-radius: 8px;
+  }
+  
+  /* Improve touch responsiveness */
+  .cursor-pointer {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(249, 115, 22, 0.3);
+  }
+  
+  /* Better active states for mobile */
+  .active\:scale-95:active {
+    transform: scale(0.95);
+  }
+  
+  /* Prevent text selection on interactive elements */
+  .cursor-pointer {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
   }
 }
 

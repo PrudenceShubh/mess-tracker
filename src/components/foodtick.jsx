@@ -43,19 +43,6 @@ const Foodtick = () => {
     setShowSuccess(false) // Hide success message when changing date
   }
 
-  // Handle checkbox changes (only if not already marked)
-  const handleMorningChange = (e) => {
-    if (!isAlreadyMarked) {
-      setMorningThali(e.target.checked)
-    }
-  }
-
-  const handleEveningChange = (e) => {
-    if (!isAlreadyMarked) {
-      setEveningThali(e.target.checked)
-    }
-  }
-
   // Save preferences to localStorage
   const savePreferences = () => {
     if (isAlreadyMarked) return
@@ -124,58 +111,72 @@ const Foodtick = () => {
         <div className='space-y-6 sm:space-y-8'>
           {/* Morning Thali */}
           <div className='group'>
-            <label className={`flex items-center justify-between p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 ${
-              isAlreadyMarked 
-                ? 'border-gray-300 cursor-not-allowed' 
-                : 'border-gray-200 hover:border-orange-300 cursor-pointer hover:shadow-md active:scale-95'
-            }`}>
-              <div className='flex items-center space-x-3 sm:space-x-4'>
+            <div 
+              onClick={() => !isAlreadyMarked && setMorningThali(!morningThali)}
+              className={`flex items-center justify-between p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 ${
+                isAlreadyMarked 
+                  ? 'border-gray-300 cursor-not-allowed' 
+                  : 'border-gray-200 hover:border-orange-300 cursor-pointer hover:shadow-md active:scale-95 active:bg-orange-50'
+              }`}
+            >
+              <div className='flex items-center space-x-3 sm:space-x-4 flex-1'>
                 <div className='w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center'>
                   <span className='text-white text-lg sm:text-xl'>🌅</span>
                 </div>
-                <div>
+                <div className='flex-1'>
                   <p className='text-lg sm:text-xl font-semibold text-gray-800'>Morning Thali</p>
                   <p className='text-sm text-gray-500'>Breakfast meal</p>
                 </div>
               </div>
-              <input 
-                type="checkbox" 
-                checked={morningThali}
-                onChange={handleMorningChange}
-                disabled={isAlreadyMarked}
-                className={`w-5 h-5 sm:w-6 sm:h-6 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 focus:ring-2 ${
-                  isAlreadyMarked ? 'cursor-not-allowed opacity-50' : ''
-                }`}
-              />
-            </label>
+              <div className='ml-4'>
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg border-2 flex items-center justify-center transition-all duration-200 ${
+                  morningThali 
+                    ? 'bg-orange-500 border-orange-500' 
+                    : 'border-gray-300 bg-white'
+                } ${isAlreadyMarked ? 'opacity-50' : ''}`}>
+                  {morningThali && (
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Evening Thali */}
           <div className='group'>
-            <label className={`flex items-center justify-between p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 ${
-              isAlreadyMarked 
-                ? 'border-gray-300 cursor-not-allowed' 
-                : 'border-gray-200 hover:border-orange-300 cursor-pointer hover:shadow-md active:scale-95'
-            }`}>
-              <div className='flex items-center space-x-3 sm:space-x-4'>
+            <div 
+              onClick={() => !isAlreadyMarked && setEveningThali(!eveningThali)}
+              className={`flex items-center justify-between p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 ${
+                isAlreadyMarked 
+                  ? 'border-gray-300 cursor-not-allowed' 
+                  : 'border-gray-200 hover:border-orange-300 cursor-pointer hover:shadow-md active:scale-95 active:bg-orange-50'
+              }`}
+            >
+              <div className='flex items-center space-x-3 sm:space-x-4 flex-1'>
                 <div className='w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center'>
                   <span className='text-white text-lg sm:text-xl'>🌆</span>
                 </div>
-                <div>
+                <div className='flex-1'>
                   <p className='text-lg sm:text-xl font-semibold text-gray-800'>Evening Thali</p>
                   <p className='text-sm text-gray-500'>Dinner meal</p>
                 </div>
               </div>
-              <input 
-                type="checkbox" 
-                checked={eveningThali}
-                onChange={handleEveningChange}
-                disabled={isAlreadyMarked}
-                className={`w-5 h-5 sm:w-6 sm:h-6 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 focus:ring-2 ${
-                  isAlreadyMarked ? 'cursor-not-allowed opacity-50' : ''
-                }`}
-              />
-            </label>
+              <div className='ml-4'>
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg border-2 flex items-center justify-center transition-all duration-200 ${
+                  eveningThali 
+                    ? 'bg-orange-500 border-orange-500' 
+                    : 'border-gray-300 bg-white'
+                } ${isAlreadyMarked ? 'opacity-50' : ''}`}>
+                  {eveningThali && (
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
